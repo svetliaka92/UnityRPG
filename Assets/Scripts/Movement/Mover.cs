@@ -3,17 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using RPG.Combat;
+using RPG.Core;
 
 namespace RPG.Movement
 {
-    public class Mover : MonoBehaviour
+    public class Mover : MonoBehaviour, IAction
     {
         [SerializeField] private Transform target;
 
         private Animator animator;
         private NavMeshAgent agent;
-        private Fighter fighter;
+        private ActionScheduler actionScheduler;
 
         private int forwardSpeedId = Animator.StringToHash("ForwardSpeed");
 
@@ -21,7 +21,7 @@ namespace RPG.Movement
         {
             agent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
-            fighter = GetComponent<Fighter>();
+            actionScheduler = GetComponent<ActionScheduler>();
         }
 
         private void Update()
@@ -36,7 +36,7 @@ namespace RPG.Movement
 
         public void StartMoveAction(Vector3 destination)
         {
-            fighter.CancelAttack();
+            actionScheduler.StartAction(this);
             MoveTo(destination);
         }
 
@@ -44,6 +44,11 @@ namespace RPG.Movement
         {
             agent.SetDestination(destination);
             ToggleStop(false);
+        }
+
+        public void Cancel()
+        {
+            ToggleStop(true);
         }
 
         public void UpdateAnimator()

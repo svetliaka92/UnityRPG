@@ -19,7 +19,13 @@ namespace RPG.Control
         {
             if (InteractWithCombat())
                 return;
-            
+
+            if (InteractWithLoot())
+                return;
+
+            if (InteractWithNPC())
+                return;
+
             if (InteractWithMovement())
                 return;
         }
@@ -40,6 +46,16 @@ namespace RPG.Control
                 return true;
             }
 
+            return false;
+        }
+
+        private bool InteractWithLoot()
+        {
+            return false;
+        }
+
+        private bool InteractWithNPC()
+        {
             return false;
         }
 
