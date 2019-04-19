@@ -331,7 +331,7 @@ PrefabInstance:
     - target: {fileID: 1928782316412358894, guid: cb43b692469d7cc4aa00c46586d9f724,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.119
+      value: 3.77
       objectReference: {fileID: 0}
     - target: {fileID: 1928782316412358894, guid: cb43b692469d7cc4aa00c46586d9f724,
         type: 3}
@@ -341,7 +341,7 @@ PrefabInstance:
     - target: {fileID: 1928782316412358894, guid: cb43b692469d7cc4aa00c46586d9f724,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.575
+      value: -6.23
       objectReference: {fileID: 0}
     - target: {fileID: 1928782316412358894, guid: cb43b692469d7cc4aa00c46586d9f724,
         type: 3}
@@ -1045,7 +1045,7 @@ PrefabInstance:
     - target: {fileID: 1928782316412358894, guid: cb43b692469d7cc4aa00c46586d9f724,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.69
+      value: 8.15
       objectReference: {fileID: 0}
     - target: {fileID: 1928782316412358894, guid: cb43b692469d7cc4aa00c46586d9f724,
         type: 3}
@@ -1055,7 +1055,7 @@ PrefabInstance:
     - target: {fileID: 1928782316412358894, guid: cb43b692469d7cc4aa00c46586d9f724,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.47
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1928782316412358894, guid: cb43b692469d7cc4aa00c46586d9f724,
         type: 3}
@@ -1866,7 +1866,7 @@ PrefabInstance:
     - target: {fileID: 1928782316412358894, guid: cb43b692469d7cc4aa00c46586d9f724,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.29
+      value: 6.02
       objectReference: {fileID: 0}
     - target: {fileID: 1928782316412358894, guid: cb43b692469d7cc4aa00c46586d9f724,
         type: 3}
@@ -1876,7 +1876,7 @@ PrefabInstance:
     - target: {fileID: 1928782316412358894, guid: cb43b692469d7cc4aa00c46586d9f724,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.69
+      value: 8.75
       objectReference: {fileID: 0}
     - target: {fileID: 1928782316412358894, guid: cb43b692469d7cc4aa00c46586d9f724,
         type: 3}
