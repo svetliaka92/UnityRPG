@@ -14,6 +14,7 @@ namespace RPG.Movement
         private Animator animator;
         private NavMeshAgent agent;
         private ActionScheduler actionScheduler;
+        private Health health;
 
         private int forwardSpeedId = Animator.StringToHash("ForwardSpeed");
 
@@ -22,10 +23,13 @@ namespace RPG.Movement
             agent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
             actionScheduler = GetComponent<ActionScheduler>();
+            health = GetComponent<Health>();
         }
 
         private void Update()
         {
+            agent.enabled = !health.IsDead;
+
             UpdateAnimator();
         }
 

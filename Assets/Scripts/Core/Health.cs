@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Combat
+namespace RPG.Core
 {
     public class Health : MonoBehaviour
     {
@@ -22,10 +22,16 @@ namespace RPG.Combat
             healthPoints -= damage;
             if (healthPoints <= 0f && !isDead)
             {
-                isDead = true;
                 healthPoints = 0f;
-                GetComponent<Animator>().SetTrigger("DeathTrigger");
+                Die();
             }
+        }
+
+        private void Die()
+        {
+            isDead = true;
+            GetComponent<Animator>().SetTrigger("DeathTrigger");
+            GetComponent<ActionScheduler>().CancelCurrentAction();
         }
     }
 }
