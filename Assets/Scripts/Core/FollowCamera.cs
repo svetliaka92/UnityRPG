@@ -7,10 +7,11 @@ namespace RPG.Core
     public class FollowCamera : MonoBehaviour
     {
         [SerializeField] private Transform followTarget;
+        [SerializeField] private Vector3 offset;
 
         void LateUpdate()
         {
-            transform.position = followTarget.position;
+            transform.position = followTarget.position + offset;
         }
     }
 }

@@ -90,6 +90,7 @@ namespace RPG.Combat
         {
             TriggerAttack(false);
             target = null;
+            mover.Cancel();
         }
 
         public void Hit()
