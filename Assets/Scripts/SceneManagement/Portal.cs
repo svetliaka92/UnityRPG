@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace RPG.SceneManagement
 {
@@ -12,7 +13,15 @@ namespace RPG.SceneManagement
         {
             print("Portal entered...");
             if (other.tag == "Player")
-                UnityEngine.SceneManagement.SceneManager.LoadScene(sceneToLoad);
+                StartCoroutine(Transition());
+        }
+
+        private IEnumerator Transition()
+        {
+            DontDestroyOnLoad(gameObject);
+            yield return SceneManager.LoadSceneAsync(sceneToLoad);
+            print("Scene loaded");
+            Destroy(gameObject);
         }
     }
 }
