@@ -60,7 +60,8 @@ namespace RPG.Combat
 
         public bool CanAttack(GameObject combatTarget)
         {
-            if (combatTarget == null)
+            if (combatTarget == null
+                || combatTarget == this.gameObject)
                 return false;
 
             Health test = combatTarget.GetComponent<Health>();

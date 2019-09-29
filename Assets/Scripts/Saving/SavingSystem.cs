@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using UnityEngine;
 
 namespace RPG.Saving
@@ -9,37 +12,88 @@ namespace RPG.Saving
     {
         public void Save(string saveFile)
         {
-            string path = GetPathFromSaveFile(saveFile);
-            print("Saving to " + path);
-            FileStream stream = File.Open(path, FileMode.Create);
+            try
+            {
+                string path = GetPathFromSaveFile(saveFile);
+                print("Saving to: " + path);
+                using (FileStream stream = File.Open(path, FileMode.Create))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
 
-            //..
-
-            stream.WriteByte(0xc2);
-            stream.WriteByte(0xa1);
-            stream.WriteByte(0x48);
-            stream.WriteByte(0x6f);
-            stream.WriteByte(0x6c);
-            stream.WriteByte(0x61);
-            stream.WriteByte(0x20);
-            stream.WriteByte(0x4d);
-            stream.WriteByte(0x75);
-            stream.WriteByte(0x6e);
-            stream.WriteByte(0x64);
-            stream.WriteByte(0x6f);
-            stream.WriteByte(0x21);
-
-            stream.Close();
+                    bf.Serialize(stream, CaptureState());
+                    stream.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                print(e.Message);
+            }
         }
 
         public void Load(string saveFile)
         {
-            print("Loading from " + GetPathFromSaveFile(saveFile));
+            print("Loading from: " + GetPathFromSaveFile(saveFile));
+            string path = GetPathFromSaveFile(saveFile);
+            try
+            {
+                if (File.Exists(path))
+                {
+                    using (FileStream stream = File.Open(path, FileMode.Open))
+                    {
+                        BinaryFormatter bf = new BinaryFormatter();
+                        RestoreState(bf.Deserialize(stream));
+
+                        stream.Close();
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                //..
+            }
+        }
+
+        private object CaptureState()
+        {
+            Dictionary<string, object> gameState = new Dictionary<string, object>();
+
+            foreach (SaveableEntity saveable in FindObjectsOfType<SaveableEntity>())
+                gameState[saveable.GetUniqueIdentifier()] = saveable.CaptureState();
+
+            return gameState;
+        }
+
+        private void RestoreState(object state)
+        {
+            Dictionary<string, object> gameState = (Dictionary<string, object>)state;
+            foreach (SaveableEntity saveable in FindObjectsOfType<SaveableEntity>())
+                saveable.RestoreState(gameState);
         }
 
         private string GetPathFromSaveFile(string saveFile)
         {
             return Path.Combine(Application.persistentDataPath, saveFile + ".sav");
+        }
+    }
+
+    /// <summary>
+    /// Helper classes
+    /// </summary>
+    [System.Serializable]
+    public class SerializableVector3
+    {
+        float x, y, z;
+
+        public SerializableVector3(Vector3 vector)
+        {
+            x = vector.x;
+            y = vector.y;
+            z = vector.z;
+        }
+
+        public Vector3 ToVector3()
+        {
+            return new Vector3(x, y, z);
         }
     }
 }
