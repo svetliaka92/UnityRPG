@@ -5,69 +5,90 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace RPG.Saving
 {
     public class SavingSystem : MonoBehaviour
     {
+        public IEnumerator LoadLastScene(string saveFile)
+        {
+            // get the state
+            Dictionary<string, object> state = LoadFile(saveFile);
+            if (state.ContainsKey("lastSceneBuildIndex"))
+            {
+                int lastScene = (int)state["lastSceneBuildIndex"];
+                // load last scene
+                if (lastScene != SceneManager.GetActiveScene().buildIndex)
+                    yield return SceneManager.LoadSceneAsync(lastScene);
+            }
+
+            // restore state
+            RestoreState(state);
+        }
+
         public void Save(string saveFile)
         {
-            try
-            {
-                string path = GetPathFromSaveFile(saveFile);
-                print("Saving to: " + path);
-                using (FileStream stream = File.Open(path, FileMode.Create))
-                {
-                    BinaryFormatter bf = new BinaryFormatter();
+            Dictionary<string, object> state = LoadFile(saveFile);
 
-                    bf.Serialize(stream, CaptureState());
-                    stream.Close();
-                }
-            }
-            catch (Exception e)
-            {
-                print(e.Message);
-            }
+            CaptureState(state);
+
+            SaveFile(saveFile, state);
         }
 
         public void Load(string saveFile)
         {
-            print("Loading from: " + GetPathFromSaveFile(saveFile));
-            string path = GetPathFromSaveFile(saveFile);
-            try
-            {
-                if (File.Exists(path))
-                {
-                    using (FileStream stream = File.Open(path, FileMode.Open))
-                    {
-                        BinaryFormatter bf = new BinaryFormatter();
-                        RestoreState(bf.Deserialize(stream));
+            RestoreState(LoadFile(saveFile));
+        }
 
-                        stream.Close();
-                    }
+        private void SaveFile(string saveFile, Dictionary<string, object> state)
+        {
+            string path = GetPathFromSaveFile(saveFile);
+
+            using (FileStream file = File.Open(path, FileMode.Create))
+            {
+                BinaryFormatter br = new BinaryFormatter();
+
+                br.Serialize(file, state);
+                file.Close();
+            }
+
+        }
+
+        private Dictionary<string, object> LoadFile(string saveFile)
+        {
+            string path = GetPathFromSaveFile(saveFile);
+            if (!File.Exists(path))
+            {
+                return new Dictionary<string, object>();
+            }
+            else
+            {
+                using (FileStream file = File.Open(path, FileMode.Open))
+                {
+                    BinaryFormatter br = new BinaryFormatter();
+
+                    return (Dictionary<string, object>)br.Deserialize(file);
                 }
             }
-            catch(Exception e)
+        }
+
+        private void CaptureState(Dictionary<string, object> state)
+        {
+            foreach (SaveableEntity saveable in FindObjectsOfType<SaveableEntity>())
+                state[saveable.GetUniqueIdentifier()] = saveable.CaptureState();
+
+            state["lastSceneBuildIndex"] = SceneManager.GetActiveScene().buildIndex;
+        }
+
+        private void RestoreState(Dictionary<string, object> state)
+        {
+            foreach (SaveableEntity saveable in FindObjectsOfType<SaveableEntity>())
             {
-                //..
+                string id = saveable.GetUniqueIdentifier();
+                if (state.ContainsKey(id))
+                    saveable.RestoreState(state[id]);
             }
-        }
-
-        private object CaptureState()
-        {
-            Dictionary<string, object> gameState = new Dictionary<string, object>();
-
-            foreach (SaveableEntity saveable in FindObjectsOfType<SaveableEntity>())
-                gameState[saveable.GetUniqueIdentifier()] = saveable.CaptureState();
-
-            return gameState;
-        }
-
-        private void RestoreState(object state)
-        {
-            Dictionary<string, object> gameState = (Dictionary<string, object>)state;
-            foreach (SaveableEntity saveable in FindObjectsOfType<SaveableEntity>())
-                saveable.RestoreState(gameState);
         }
 
         private string GetPathFromSaveFile(string saveFile)

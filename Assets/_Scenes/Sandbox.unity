@@ -1865,7 +1865,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834679673}
-  m_LocalRotation: {x: 0.00014349581, y: 0.9973687, z: -0.07246934, w: 0.0019748798}
+  m_LocalRotation: {x: 0.00014349518, y: 0.9973687, z: -0.072469346, w: 0.0019748711}
   m_LocalPosition: {x: 29.21, y: 1.2960052, z: -38.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2462,7 +2462,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132747395}
-  m_LocalRotation: {x: 0.0070881806, y: 0.9922636, z: -0.06777458, w: 0.10377547}
+  m_LocalRotation: {x: 0.0070881816, y: 0.9922636, z: -0.06777458, w: 0.10377549}
   m_LocalPosition: {x: 22.93, y: 4.5, z: -5.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2958,6 +2958,11 @@ PrefabInstance:
       propertyPath: healthPoints
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3805963681460607466, guid: cb43b692469d7cc4aa00c46586d9f724,
+        type: 3}
+      propertyPath: uniqueIdentifier
+      value: 791038e7-d6fe-492b-b8ae-d46fb51510c9
+      objectReference: {fileID: 0}
     - target: {fileID: 7185887722406821070, guid: cb43b692469d7cc4aa00c46586d9f724,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -2978,11 +2983,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 01b2546c969fe814794af634cb4534f4, type: 2}
-    - target: {fileID: 3805963681460607466, guid: cb43b692469d7cc4aa00c46586d9f724,
-        type: 3}
-      propertyPath: uniqueIdentifier
-      value: 791038e7-d6fe-492b-b8ae-d46fb51510c9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb43b692469d7cc4aa00c46586d9f724, type: 3}
 --- !u!4 &1349076340 stripped
@@ -4946,11 +4946,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5598287192653422233, guid: 684885a334448694abb86aceb58b0f2f,
-        type: 3}
-      propertyPath: uniqueIdentifier
-      value: 10d62456-3b2c-4e5f-b84b-64de1350190f
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 684885a334448694abb86aceb58b0f2f, type: 3}

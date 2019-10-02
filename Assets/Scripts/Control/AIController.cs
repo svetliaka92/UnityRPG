@@ -29,7 +29,7 @@ namespace RPG.Control
 
         private int currentWaypointIndex = 0;
 
-        private void Start()
+        private void Awake()
         {
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
