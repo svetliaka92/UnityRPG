@@ -1,7 +1,4 @@
-﻿using RPG.Core;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using RPG.Resources;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -33,8 +30,14 @@ namespace RPG.Combat
                 weapon.name = weaponName;
             }
 
+            AnimatorOverrideController overrideController =
+                    animator.runtimeAnimatorController as AnimatorOverrideController;
+
             if (animatorOverride)
                 animator.runtimeAnimatorController = animatorOverride;
+            
+            else if(overrideController)
+                animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
         }
 
         private void DestroyOldWeapong(Transform rightHand, Transform leftHand)

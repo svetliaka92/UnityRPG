@@ -121,6 +121,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2476106007581276671, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: characterClass
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5532129232110787419, guid: 5962190d83e785c4a840cf64e547b8f9,
         type: 3}
       propertyPath: m_Name
@@ -224,6 +229,10 @@ PrefabInstance:
       propertyPath: leftHandTransform
       value: 
       objectReference: {fileID: 3258244984378666434}
+    - target: {fileID: 1142308490, guid: 5962190d83e785c4a840cf64e547b8f9, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5962190d83e785c4a840cf64e547b8f9, type: 3}
 --- !u!1 &707529631293697765 stripped

@@ -1,7 +1,4 @@
-﻿using RPG.Core;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using RPG.Resources;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -10,11 +7,13 @@ namespace RPG.Combat
     {
         [SerializeField] private float projectileSpeed = 0.2f;
         [SerializeField] private bool isHoming = false;
+        [SerializeField] private GameObject hitEffect;
+        [SerializeField] private float maxLifetime = 10f;
+        [SerializeField] private GameObject[] destroyOnHit = null;
+        [SerializeField] private float lifeAfterImpact = 2f;
         Health target = null;
 
         private float damage = 0;
-
-        private bool isInited;
 
         private void Start()
         {
@@ -23,9 +22,6 @@ namespace RPG.Combat
 
         private void Update()
         {
-            if (!isInited)
-                return;
-
             if (isHoming && !target.IsDead)
                 transform.LookAt(GetAimLocation());
 
@@ -36,6 +32,8 @@ namespace RPG.Combat
         {
             this.target = target;
             this.damage = damage;
+
+            Destroy(gameObject, maxLifetime);
         }
 
         private Vector3 GetAimLocation()
@@ -55,8 +53,18 @@ namespace RPG.Combat
                 if (target.IsDead)
                     return;
 
+                if (hitEffect)
+                {
+                    GameObject hit = Instantiate(hitEffect, transform.position, Quaternion.identity);
+                    Destroy(hit, maxLifetime);
+                }
+
                 targetHit.TakeDamage(damage);
-                Destroy(gameObject);
+
+                foreach (GameObject toDestroy in destroyOnHit)
+                    Destroy(toDestroy);
+
+                Destroy(gameObject, lifeAfterImpact);
             }
         }
     }

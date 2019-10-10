@@ -192,7 +192,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 20
-  dummyTarget: {fileID: 0}
+  isHoming: 0
+  hitEffect: {fileID: 0}
+  maxLifetime: 10
+  destroyOnHit:
+  - {fileID: 7174083898989963658}
+  lifeAfterImpact: 2
 --- !u!65 &7357659253228621821
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -11,6 +11,11 @@ namespace RPG.Saving
 {
     public class SavingSystem : MonoBehaviour
     {
+        private void Start()
+        {
+            print(Application.persistentDataPath);
+        }
+
         public IEnumerator LoadLastScene(string saveFile)
         {
             // get the state
