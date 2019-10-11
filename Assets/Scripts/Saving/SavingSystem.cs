@@ -46,6 +46,11 @@ namespace RPG.Saving
             RestoreState(LoadFile(saveFile));
         }
 
+        public void Delete(string saveFile)
+        {
+            File.Delete(GetPathFromSaveFile(saveFile));
+        }
+
         private void SaveFile(string saveFile, Dictionary<string, object> state)
         {
             string path = GetPathFromSaveFile(saveFile);

@@ -9,7 +9,7 @@ namespace RPG.Resources
 {
     public class Health : MonoBehaviour, ISaveable
     {
-        [SerializeField] private float healthPoints = 100f;
+        private float healthPoints = -1f;
         private BaseStats baseStats;
 
         public float GetHealth
@@ -29,6 +29,9 @@ namespace RPG.Resources
 
         private void Start()
         {
+            if (healthPoints >= 0)
+                return;
+
             healthPoints = baseStats.GetStat(Stat.Health);
         }
 

@@ -7,29 +7,45 @@ namespace RPG.Stats
     [CreateAssetMenu(fileName = "Progression", menuName = "Stats/New Progression", order = 0)]
     public class Progression : ScriptableObject
     {
-        [SerializeField] private ProgressionCharacterClass[] progressionCharacterClasses;
+        [SerializeField] private ProgressionCharacterClass[] characterClasses;
 
-        public float GetStat(Stat stat ,CharacterClass characterClass, int level)
+        Dictionary<CharacterClass, Dictionary<Stat, float[]>> lookupTable = null;
+
+        public void BuildLookup()
         {
-            //foreach (ProgressionCharacterClass progressionCharacterClass in progressionCharacterClasses)
-            //    if (progressionCharacterClass.characterClass == characterClass)
-            //        return progressionCharacterClass.health[level - 1];
+            if (lookupTable != null)
+                return;
 
-            foreach (ProgressionCharacterClass progressionCharacterClass in progressionCharacterClasses)
+            lookupTable = new Dictionary<CharacterClass, Dictionary<Stat, float[]>>();
+
+            foreach (ProgressionCharacterClass progressionCharacterClass in characterClasses)
             {
-                if (progressionCharacterClass.characterClass != characterClass) continue;
+                Dictionary<Stat, float[]> statLookupTable = new Dictionary<Stat, float[]>();
 
                 foreach (ProgressionStat progressionStat in progressionCharacterClass.stats)
-                {
-                    if (progressionStat.stat != stat) continue;
+                    statLookupTable[progressionStat.stat] = progressionStat.levels;
 
-                    if (progressionStat.levels.Length < level) continue;
-
-                    return progressionStat.levels[level - 1];
-                }
+                lookupTable[progressionCharacterClass.characterClass] = statLookupTable;
             }
+        }
 
-            return 50f;
+        public int GetLevels(Stat stat, CharacterClass characterClass)
+        {
+            BuildLookup();
+
+            float[] levels = lookupTable[characterClass][stat];
+            return levels.Length;
+        }
+
+        public float GetStat(Stat stat, CharacterClass characterClass, int level)
+        {
+            BuildLookup();
+
+            float[] levels = lookupTable[characterClass][stat];
+
+            if (levels.Length < level) return 0f;
+
+            return levels[level - 1];
         }
 
         [System.Serializable]
