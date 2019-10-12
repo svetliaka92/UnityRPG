@@ -18,5 +18,6 @@ MonoBehaviour:
   weaponRange: 15
   timeBetweenAttacks: 1
   weaponDamage: 10
+  percentageBonus: 50
   projectile: {fileID: 7380638064107735424, guid: 13d527048d01b674d8103b846f26f5e3,
     type: 3}

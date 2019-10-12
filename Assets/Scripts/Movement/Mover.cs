@@ -21,7 +21,15 @@ namespace RPG.Movement
 
         private int forwardSpeedId = Animator.StringToHash("ForwardSpeed");
 
+        private bool isInited = false;
+
         private void Awake()
+        {
+            if (!isInited)
+                Init();
+        }
+
+        private void Init()
         {
             agent = GetComponent<NavMeshAgent>();
 
@@ -30,6 +38,8 @@ namespace RPG.Movement
             actionScheduler = GetComponent<ActionScheduler>();
 
             health = GetComponent<Health>();
+
+            isInited = true;
         }
 
         private void Update()
@@ -79,6 +89,9 @@ namespace RPG.Movement
 
         public void RestoreState(object state)
         {
+            if (!isInited)
+                Init();
+
             SerializableVector3 pos = (SerializableVector3)state;
 
             agent.enabled = false;

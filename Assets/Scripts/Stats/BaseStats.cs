@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using GameDevTV.Utils;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,27 +12,90 @@ namespace RPG.Stats
         [SerializeField] private CharacterClass characterClass;
         [SerializeField] private Progression progression = null;
         [SerializeField] private Experience experience;
+        [SerializeField] private GameObject levelUpParticles = null;
 
-        int currentLevel = 0;
+        private LazyValue<int> currentLevel;
+
+        public event Action onLevelUpEvent;
 
         private void Awake()
         {
             experience = GetComponent<Experience>();
+
+            currentLevel = new LazyValue<int>(CalculateLevel);
         }
 
         public void Start()
         {
-            currentLevel = GetLevel();
+            currentLevel.ForceInit();
+        }
+
+        private void OnEnable()
+        {
+            if (experience)
+                experience.onExperienceGained += UpdateLevel;
+        }
+
+        private void OnDisable()
+        {
+            if (experience)
+                experience.onExperienceGained -= UpdateLevel;
+        }
+
+        private void UpdateLevel()
+        {
+            int newLevel = CalculateLevel();
+            if (newLevel > currentLevel.value)
+            {
+                currentLevel.value = newLevel;
+
+                if (onLevelUpEvent != null)
+                    onLevelUpEvent();
+
+                LevelUpEffect();
+            }
+        }
+
+        private void LevelUpEffect()
+        {
+            Instantiate(levelUpParticles, transform);
         }
 
         public float GetStat(Stat stat)
         {
+            return (GetBaseStat(stat) + GetAdditiveMultiplier(stat)) * GetPercentageMultiplier(stat);
+        }
+
+        public float GetBaseStat(Stat stat)
+        {
             return progression.GetStat(stat, characterClass, GetLevel());
+        }
+
+        private float GetAdditiveMultiplier(Stat stat)
+        {
+            float total = 0f;
+
+            foreach(IModifierProvider provider in GetComponents<IModifierProvider>())
+                foreach(float modifier in provider.GetAdditiveModifiers(stat))
+                    total += modifier;
+
+            return total;
+        }
+
+        private float GetPercentageMultiplier(Stat stat)
+        {
+            float totalPercent = 0f;
+
+            foreach (IModifierProvider provider in GetComponents<IModifierProvider>())
+                foreach (float modifier in provider.GetPercentageModifiers(stat))
+                    totalPercent += modifier;
+
+            return 1f + totalPercent / 100f;
         }
 
         public int GetLevel()
         {
-            return currentLevel;
+            return currentLevel.value;
         }
 
         public int CalculateLevel()

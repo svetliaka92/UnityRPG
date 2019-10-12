@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eecfc18782e8d24d8d7c535fb575752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 100
+  regeneratePercent: 70
 --- !u!114 &5744774353212621126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +246,66 @@ PrefabInstance:
       propertyPath: m_StoppingDistance
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7923497452033287611, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: cursorMappings.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923497452033287611, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: mover
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923497452033287611, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: fighter
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923497452033287611, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: cursorMappings.Array.data[0].cursorTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 21628736160fcc9488493401da3ef621, type: 3}
+    - target: {fileID: 7923497452033287611, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: cursorMappings.Array.data[1].cursorType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923497452033287611, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: cursorMappings.Array.data[1].cursorTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 8859fce41c5d0a148ad0b7eebfca7fe9, type: 3}
+    - target: {fileID: 7923497452033287611, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: cursorMappings.Array.data[2].cursorType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923497452033287611, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: cursorMappings.Array.data[2].cursorTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 45d8aea3ad483cf4fb21e75f90f795d9, type: 3}
+    - target: {fileID: 7923497452033287611, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: cursorMappings.Array.data[3].cursorType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923497452033287611, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: cursorMappings.Array.data[3].cursorTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 2e71a8202d3b4a3448ec85ced5a40265, type: 3}
+    - target: {fileID: 7923497452033287611, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: cursorMappings.Array.data[4].cursorType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923497452033287611, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: cursorMappings.Array.data[4].cursorTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: f8c873f1e53e83f4aabf342d6be1dfc3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5962190d83e785c4a840cf64e547b8f9, type: 3}
 --- !u!1 &707529631293697765 stripped

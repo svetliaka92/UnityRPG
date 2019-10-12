@@ -21,7 +21,7 @@ namespace RPG.Combat
         {
             Health target = fighter.GetTarget();
             if (target != null)
-                healthText.text = String.Format("{0:0}%", target.GetPercentage());
+                healthText.text = String.Format("{0:0}/{1:0}", target.GetHealthPoints(), target.GetMaxHealthPoints());
 
             else
                 healthText.text = "N/A";
