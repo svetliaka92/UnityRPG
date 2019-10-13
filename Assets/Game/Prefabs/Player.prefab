@@ -16,31 +16,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3127217893370282055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 707529631293697765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c24bc5e696566194daca6d31efe0460f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4200280039523668586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 707529631293697765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5eecfc18782e8d24d8d7c535fb575752, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  regeneratePercent: 70
 --- !u!114 &5744774353212621126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,6 +29,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experiencePoints: 0
+--- !u!114 &4199182782607756070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707529631293697765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c24bc5e696566194daca6d31efe0460f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3258244984378262574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -306,6 +293,11 @@ PrefabInstance:
       propertyPath: cursorMappings.Array.data[4].cursorTexture
       value: 
       objectReference: {fileID: 2800000, guid: f8c873f1e53e83f4aabf342d6be1dfc3, type: 3}
+    - target: {fileID: 8515129105754559657, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5962190d83e785c4a840cf64e547b8f9, type: 3}
 --- !u!1 &707529631293697765 stripped

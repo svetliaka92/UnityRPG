@@ -2,15 +2,19 @@
 using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
+using RPG.UI.DamageText;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-namespace RPG.Resources
+namespace RPG.Attributes
 {
     public class Health : MonoBehaviour, ISaveable
     {
         [SerializeField] private float regeneratePercent = 70f;
+        [SerializeField] DamageTextSpawner damageTextSpawner;
+
         private LazyValue<float> healthPoints;
         private BaseStats baseStats;
 
@@ -60,6 +64,7 @@ namespace RPG.Resources
         public void TakeDamage(GameObject instigator, float damage)
         {
             healthPoints.value -= damage;
+
             if (healthPoints.value <= 0f && !isDead)
             {
                 healthPoints.value = 0f;
@@ -67,6 +72,8 @@ namespace RPG.Resources
 
                 AwardExperience(instigator);
             }
+            else
+                damageTextSpawner.Spawn(damage);
         }
 
         public float GetHealthPoints()
@@ -81,7 +88,12 @@ namespace RPG.Resources
 
         public float GetPercentage()
         {
-            return (healthPoints.value / baseStats.GetStat(Stat.Health)) * 100f;
+            return GetFraction() * 100f;
+        }
+
+        public float GetFraction()
+        {
+            return (healthPoints.value / baseStats.GetStat(Stat.Health));
         }
 
         private void Die()
