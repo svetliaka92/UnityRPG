@@ -12,8 +12,8 @@ namespace RPG.Control
     {
         [SerializeField] private Mover mover;
         [SerializeField] private Fighter fighter;
+        [SerializeField] private float raycastRadius = 1f;
         [SerializeField] private float maxNavMeshProjectionDistance = 100f;
-        [SerializeField] private float maxPathLength = 40f;
 
         public Fighter PlayerFighter { get { return fighter; } }
         private Health health;
@@ -60,7 +60,7 @@ namespace RPG.Control
 
         private bool InteractWithComponent()
         {
-            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            RaycastHit[] hits = Physics.SphereCastAll(GetMouseRay(), raycastRadius);
             foreach (RaycastHit hit in hits)
             {
                 IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
@@ -122,6 +122,9 @@ namespace RPG.Control
 
             if (hasHit)
             {
+                if (!mover.CanMoveTo(target))
+                    return false;
+
                 if (Input.GetMouseButton(0))
                     mover.StartMoveAction(target);
 
@@ -155,34 +158,13 @@ namespace RPG.Control
             // return true if found
             target = navMeshHit.position;
 
-            NavMeshPath path = new NavMeshPath();
-            bool hasPath = NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path);
-            if (!hasPath)
-                return false;
-
-            if (path.status != NavMeshPathStatus.PathComplete)
-                return false;
-
-            if (GetPathLength(path) > maxPathLength)
+            if (!mover.CanMoveTo(target))
                 return false;
 
             return true;
         }
 
-        private float GetPathLength(NavMeshPath path)
-        {
-            float totalDistance = 0f;
-
-            if (path.corners.Length < 2)
-                return totalDistance;
-
-            Vector3[] points = path.corners;
-
-            for (int i = 0; i < points.Length - 1; i++)
-                totalDistance += Vector3.Distance(points[i + 1], points[i]);
-
-            return totalDistance;
-        }
+        
 
         private void SetCursor(CursorType type)
         {

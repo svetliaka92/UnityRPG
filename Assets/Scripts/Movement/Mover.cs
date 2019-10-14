@@ -13,6 +13,7 @@ namespace RPG.Movement
     {
         [SerializeField] private Transform target;
         [SerializeField] private float maxSpeed = 5.662317f;
+        [SerializeField] private float maxPathLength = 40f;
 
         private Animator animator;
         private NavMeshAgent agent;
@@ -58,6 +59,37 @@ namespace RPG.Movement
         {
             actionScheduler.StartAction(this);
             MoveTo(destination, speedFraction);
+        }
+
+        public bool CanMoveTo(Vector3 destination)
+        {
+            NavMeshPath path = new NavMeshPath();
+            bool hasPath = NavMesh.CalculatePath(transform.position, destination, NavMesh.AllAreas, path);
+            if (!hasPath)
+                return false;
+
+            if (path.status != NavMeshPathStatus.PathComplete)
+                return false;
+
+            if (GetPathLength(path) > maxPathLength)
+                return false;
+
+            return true;
+        }
+
+        private float GetPathLength(NavMeshPath path)
+        {
+            float totalDistance = 0f;
+
+            if (path.corners.Length < 2)
+                return totalDistance;
+
+            Vector3[] points = path.corners;
+
+            for (int i = 0; i < points.Length - 1; i++)
+                totalDistance += Vector3.Distance(points[i + 1], points[i]);
+
+            return totalDistance;
         }
 
         public void MoveTo(Vector3 destination, float speedFraction = 1f)

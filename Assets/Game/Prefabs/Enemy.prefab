@@ -186,6 +186,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8515129105754559657, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729462450855234710, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729462450855234710, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729462450855234710, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729462450855234710, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 8370920305500356835}
+    - target: {fileID: 6729462450855234710, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: Aggrevate
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729462450855234710, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1988806146240361018, guid: 5962190d83e785c4a840cf64e547b8f9,
         type: 3}
       propertyPath: weapon
@@ -215,11 +250,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8515129105754559657, guid: 5962190d83e785c4a840cf64e547b8f9,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7923497452033287611, guid: 5962190d83e785c4a840cf64e547b8f9, type: 3}
