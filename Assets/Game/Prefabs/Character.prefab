@@ -375,7 +375,7 @@ NavMeshAgent:
   m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 5000
-  m_StoppingDistance: 2
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -397,8 +397,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mover: {fileID: 1142308494}
   fighter: {fileID: 1988806146240361018}
+  raycastRadius: 1
   maxNavMeshProjectionDistance: 100
-  maxPathLength: 40
   cursorMappings: []
 --- !u!114 &1142308494
 MonoBehaviour:
@@ -414,6 +414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   maxSpeed: 5.662317
+  maxPathLength: 40
 --- !u!114 &1988806146240361018
 MonoBehaviour:
   m_ObjectHideFlags: 0

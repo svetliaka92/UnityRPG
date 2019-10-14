@@ -10,12 +10,29 @@ namespace RPG.Stats
     {
         [SerializeField] private float experiencePoints = 0f;
 
+        private BaseStats baseStats;
+
         public event Action onExperienceGained;
+
+        private void Awake()
+        {
+            baseStats = GameObject.FindWithTag("Player").GetComponent<BaseStats>();
+        }
 
         public void GainExperience(float experience)
         {
             experiencePoints += experience;
             onExperienceGained?.Invoke();
+        }
+
+        public float GetExperienceToLevel()
+        {
+            return baseStats.GetStat(Stat.ExperienceToLevelUp);
+        }
+
+        public float GetFraction()
+        {
+            return experiencePoints / baseStats.GetStat(Stat.ExperienceToLevelUp);
         }
 
         public float GetExperience()

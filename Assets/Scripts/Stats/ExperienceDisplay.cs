@@ -8,6 +8,8 @@ namespace RPG.Stats
     public class ExperienceDisplay : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI experienceText;
+        [SerializeField] private TextMeshProUGUI experienceToLevelText;
+        [SerializeField] private RectTransform expBar;
 
         private Experience experience;
 
@@ -19,6 +21,9 @@ namespace RPG.Stats
         private void Update()
         {
             experienceText.text = experience.GetExperience().ToString();
+            experienceToLevelText.text = experience.GetExperienceToLevel().ToString();
+
+            expBar.localScale = new Vector3(experience.GetFraction(), 1f, 1f);
         }
     }
 }
