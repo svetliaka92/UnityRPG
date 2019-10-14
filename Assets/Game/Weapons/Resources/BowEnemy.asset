@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: BowEnemy
   m_EditorClassIdentifier: 
   animatorOverride: {fileID: 22100000, guid: f1ba56754e7e6d34ea616df9811fba39, type: 2}
-  weaponPrefab: {fileID: 8339312145662029919, guid: c9a42df6ba1f3cf42a9b4f7da792a534,
+  weaponPrefab: {fileID: -2028077908276993934, guid: c9a42df6ba1f3cf42a9b4f7da792a534,
     type: 3}
   isRightHanded: 0
   weaponRange: 10
   timeBetweenAttacks: 3
   weaponDamage: 1
+  percentageBonus: 0
   projectile: {fileID: 7608371926170623303, guid: 6dafc232d56683e4ba99ab720f7a40cb,
     type: 3}

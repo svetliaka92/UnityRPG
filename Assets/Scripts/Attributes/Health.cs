@@ -13,7 +13,6 @@ namespace RPG.Attributes
     public class Health : MonoBehaviour, ISaveable
     {
         [SerializeField] private float regeneratePercent = 70f;
-        [SerializeField] DamageTextSpawner damageTextSpawner;
         [SerializeField] private TakeDamageEvent onTakeDamage;
         [SerializeField] private UnityEvent onDie;
 
@@ -83,7 +82,7 @@ namespace RPG.Attributes
                 AwardExperience(instigator);
             }
             else
-                damageTextSpawner.Spawn(damage);
+                onTakeDamage.Invoke(damage);
         }
 
         public float GetHealthPoints()
