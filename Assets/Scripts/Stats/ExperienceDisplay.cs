@@ -23,7 +23,11 @@ namespace RPG.Stats
             experienceText.text = experience.GetExperience().ToString();
             experienceToLevelText.text = experience.GetExperienceToLevel().ToString();
 
-            expBar.localScale = new Vector3(experience.GetFraction(), 1f, 1f);
+            float expToLevel = experience.GetExperienceToLevel();
+
+            expBar.localScale = new Vector3(Mathf.Approximately(expToLevel, 0f) ? 0f : experience.GetFraction(),
+                                            1f,
+                                            1f);
         }
     }
 }

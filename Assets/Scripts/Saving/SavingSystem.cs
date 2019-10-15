@@ -13,7 +13,7 @@ namespace RPG.Saving
     {
         private void Start()
         {
-            print(Application.persistentDataPath);
+            //print(Application.persistentDataPath);
         }
 
         public IEnumerator LoadLastScene(string saveFile)

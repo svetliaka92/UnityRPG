@@ -25,6 +25,8 @@ namespace RPG.Attributes
         private LazyValue<float> healthPoints;
         private BaseStats baseStats;
 
+        private float currentMaxHp = 0f;
+
         public float GetHealth
         {
             get { return healthPoints.value; }
@@ -63,9 +65,21 @@ namespace RPG.Attributes
 
         public void RegenerateHealth()
         {
-            float regenHealthPoints = baseStats.GetStat(Stat.Health) * (regeneratePercent / 100f);
+            float newMax = baseStats.GetStat(Stat.Health);
 
-            healthPoints.value = Mathf.Max(healthPoints.value, regenHealthPoints);
+            if (Mathf.Approximately(healthPoints.value, currentMaxHp))
+                healthPoints.value = newMax;
+
+            else
+            {
+                float regenHealthPoints = newMax * (regeneratePercent / 100f);
+
+                healthPoints.value = Mathf.Min(healthPoints.value + regenHealthPoints, newMax);
+
+                //healthPoints.value = Mathf.Max(healthPoints.value, regenHealthPoints);
+            }
+
+            currentMaxHp = newMax;
         }
 
         public void TakeDamage(GameObject instigator, float damage)
@@ -130,6 +144,9 @@ namespace RPG.Attributes
             // die if no HP left
 
             healthPoints.value = (float)state;
+
+            currentMaxHp = baseStats.GetStat(Stat.Health);
+
             if (healthPoints.value <= 0)
                 Die();
         }
