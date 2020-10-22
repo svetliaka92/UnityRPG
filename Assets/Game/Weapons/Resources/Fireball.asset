@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d147e6a54bdd88e4c85b494b9a6cacae, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
+  itemID: 9a34a032-c943-4386-a8c6-960c85925e70
+  displayName: Fireball
+  description: Blow up your enemies!
+  icon: {fileID: 21300000, guid: a1ec2c0ddc0da634b85f0f465fec2d0d, type: 3}
+  pickup: {fileID: 4464156507780356890, guid: fd20f34ef62d37e4abb669b1c5c1af42, type: 3}
+  stackable: 0
+  allowedEquipLocation: 5
   animatorOverride: {fileID: 22100000, guid: 3bff3d1dece59324b876b1c42c2a60ca, type: 2}
   weaponPrefab: {fileID: 0}
   isRightHanded: 0

@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d147e6a54bdd88e4c85b494b9a6cacae, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: 
+  itemID: cab63b89-e32e-4d1d-9f56-d9352337f2a9
+  displayName: Bow
+  description: Thwok!
+  icon: {fileID: 21300000, guid: d19901b0ee3c38743a7d383bd484b0b5, type: 3}
+  pickup: {fileID: 8368306951990378957, guid: b783aaa398cf7094ca3e169d9c132175, type: 3}
+  stackable: 0
+  allowedEquipLocation: 5
   animatorOverride: {fileID: 22100000, guid: f1ba56754e7e6d34ea616df9811fba39, type: 2}
   weaponPrefab: {fileID: -2028077908276993934, guid: c9a42df6ba1f3cf42a9b4f7da792a534,
     type: 3}

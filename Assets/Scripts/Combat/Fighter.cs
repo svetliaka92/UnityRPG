@@ -6,10 +6,12 @@ using RPG.Attributes;
 using RPG.Stats;
 using System.Collections.Generic;
 using GameDevTV.Utils;
+using GameDevTV.Inventories;
+using System;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
+    public class Fighter : MonoBehaviour, IAction, ISaveable
     {
         [SerializeField] private Transform rightHandTransform = null;
         [SerializeField] private Transform leftHandTransform = null;
@@ -18,6 +20,9 @@ namespace RPG.Combat
         [SerializeField] private string defaultWeaponName = "Unarmed";
 
         private float timeSinceLastAttack = Mathf.Infinity;
+
+        Equipment equipment;
+
         private Animator animator;
         private Health target;
         private Mover mover;
@@ -41,6 +46,10 @@ namespace RPG.Combat
 
             currentWeaponConfig = defaultWeapon;
             currentWeapon = new LazyValue<Weapon>(SetupDefaultWeapon);
+
+            equipment = GetComponent<Equipment>();
+            if (equipment)
+                equipment.equipmentUpdated += UpdateWeapon;
         }
 
         private Weapon SetupDefaultWeapon()
@@ -76,6 +85,15 @@ namespace RPG.Combat
         {
             currentWeaponConfig = weapon;
             currentWeapon.value = AttachWeapon(weapon);
+        }
+
+        private void UpdateWeapon()
+        {
+            WeaponConfig weapon = (WeaponConfig)equipment.GetItemInSlot(EquipLocation.Weapon);
+            if (weapon)
+                EquipWeapon(weapon);
+            else
+                EquipWeapon(defaultWeapon);
         }
 
         private Weapon AttachWeapon(WeaponConfig weapon)
@@ -180,18 +198,6 @@ namespace RPG.Combat
         {
             WeaponConfig weapon = UnityEngine.Resources.Load<WeaponConfig>((string)state);
             EquipWeapon(weapon);
-        }
-
-        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
-        {
-            if (stat == Stat.Damage)
-                yield return currentWeaponConfig.GetDamage();
-        }
-
-        public IEnumerable<float> GetPercentageModifiers(Stat stat)
-        {
-            if (stat == Stat.Damage)
-                yield return currentWeaponConfig.GetPercentageBonus();
         }
     }
 }

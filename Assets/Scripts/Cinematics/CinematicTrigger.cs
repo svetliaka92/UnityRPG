@@ -10,7 +10,7 @@ namespace RPG.Cinematics
         private bool isIntroPlayed = false;
         private void OnTriggerEnter(Collider other)
         {
-            if(other.tag == "Player" && !isIntroPlayed)
+            if(other.tag.Equals("Player") && !isIntroPlayed)
             {
                 isIntroPlayed = true;
                 GetComponent<PlayableDirector>().Play();
