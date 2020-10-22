@@ -43,7 +43,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 12
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -99,7 +99,8 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 4b99f825c6b49c74490b030c2994014d,
     type: 2}
-  m_UseShadowmask: 1
+  m_LightingSettings: {fileID: 4890085278179872738, guid: efcdf1b61b2b2f14694d2ee461a887d6,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -119,6 +120,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 425076026ae0a4f40ae498573b4987ce, type: 2}
@@ -1003,7 +1006,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 422420068}
-  m_LocalRotation: {x: 0.053066984, y: 0.81692654, z: -0.07615973, w: 0.56922287}
+  m_LocalRotation: {x: 0.05306701, y: 0.81692654, z: -0.07615971, w: 0.5692229}
   m_LocalPosition: {x: -0.52, y: 4.5, z: -12.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1160,6 +1163,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1184,6 +1188,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &447642480
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1553,6 +1558,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1577,6 +1583,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &717702068
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2243,7 +2250,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834679673}
-  m_LocalRotation: {x: 0.00014349581, y: 0.9973687, z: -0.07246934, w: 0.0019748798}
+  m_LocalRotation: {x: 0.00014349578, y: 0.9973687, z: -0.07246934, w: 0.0019748795}
   m_LocalPosition: {x: 29.21, y: 1.2960052, z: -38.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2910,7 +2917,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132747395}
-  m_LocalRotation: {x: 0.0070881774, y: 0.9922636, z: -0.06777456, w: 0.10377545}
+  m_LocalRotation: {x: 0.0070881746, y: 0.9922636, z: -0.06777458, w: 0.10377547}
   m_LocalPosition: {x: 22.93, y: 4.5, z: -5.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3045,6 +3052,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3069,6 +3077,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1164384106
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4106,6 +4115,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4130,6 +4140,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1517467044
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4810,6 +4821,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4834,6 +4846,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1803553020
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6939,6 +6952,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4985125626959362187, guid: 684885a334448694abb86aceb58b0f2f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5319316076666789923, guid: 684885a334448694abb86aceb58b0f2f,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -7004,6 +7022,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6069451934850135847, guid: 684885a334448694abb86aceb58b0f2f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -814
+      objectReference: {fileID: 0}
     - target: {fileID: 6069775681499855921, guid: 684885a334448694abb86aceb58b0f2f,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -7017,7 +7040,7 @@ PrefabInstance:
     - target: {fileID: 6069815396191149105, guid: 684885a334448694abb86aceb58b0f2f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.1484375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6069907751352646479, guid: 684885a334448694abb86aceb58b0f2f,
         type: 3}
@@ -7032,7 +7055,7 @@ PrefabInstance:
     - target: {fileID: 6069907751352646479, guid: 684885a334448694abb86aceb58b0f2f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.8515625
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6069907751352646479, guid: 684885a334448694abb86aceb58b0f2f,
         type: 3}
@@ -7052,7 +7075,7 @@ PrefabInstance:
     - target: {fileID: 6070496521024844689, guid: 684885a334448694abb86aceb58b0f2f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -24.199219
+      value: -24
       objectReference: {fileID: 0}
     - target: {fileID: 6070822722558685357, guid: 684885a334448694abb86aceb58b0f2f,
         type: 3}
