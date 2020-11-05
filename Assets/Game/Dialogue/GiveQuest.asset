@@ -1,0 +1,407 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4757583516974333670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23b155916e77754e87741fd25dfc5a3, type: 3}
+  m_Name: 3c1318c5-7ac4-4ae0-ae5a-b6824dee8265
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Why thank you!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1028
+    y: 397
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: GiveItem
+  condition:
+    and: []
+--- !u!114 &-4186161917716993600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23b155916e77754e87741fd25dfc5a3, type: 3}
+  m_Name: 59b0947e-b5da-40b8-8f0a-c3ac2721ab8d
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Ah yes, I have a favor to ask.
+  children:
+  - f141f12d-4bab-4575-b691-93d656fa32e1
+  rect:
+    serializedVersion: 2
+    x: 528
+    y: 203
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: CompleteObjective
+  condition:
+    and: []
+--- !u!114 &-1736549815835946463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23b155916e77754e87741fd25dfc5a3, type: 3}
+  m_Name: f141f12d-4bab-4575-b691-93d656fa32e1
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Can you help me with a problem?
+  children:
+  - 0f33df91-8238-4db4-9d6e-644a38c066f8
+  - 363b3ca4-a89b-46a3-ae51-dc7202b1cfe2
+  - 14a24f21-ce4c-41e9-83c3-7225b69f8be6
+  - 0f6c7c58-a901-4d52-ac3d-82bf7778cbb2
+  rect:
+    serializedVersion: 2
+    x: 527
+    y: 91
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &-1459273727922261765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23b155916e77754e87741fd25dfc5a3, type: 3}
+  m_Name: 3cbad2cd-94f8-480b-83cb-682e8e1e79d5
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Greetings!
+  children:
+  - f141f12d-4bab-4575-b691-93d656fa32e1
+  rect:
+    serializedVersion: 2
+    x: 278
+    y: 91
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &-512220565326090189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23b155916e77754e87741fd25dfc5a3, type: 3}
+  m_Name: 14a24f21-ce4c-41e9-83c3-7225b69f8be6
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: I am already helping.
+  children:
+  - e70e23df-c916-43e3-86ac-8aeb5caef982
+  rect:
+    serializedVersion: 2
+    x: 779
+    y: 301
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and:
+    - or:
+      - predicate: HasQuest
+        isNegated: 0
+        parameters:
+        - Quest 2
+    - or:
+      - predicate: CompletedQuest
+        isNegated: 1
+        parameters:
+        - Quest 2
+--- !u!114 &-476084723540305740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23b155916e77754e87741fd25dfc5a3, type: 3}
+  m_Name: 0f33df91-8238-4db4-9d6e-644a38c066f8
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Oh hell no!
+  children:
+  - f1c5372c-1af0-4c6e-a508-5647dfe0caf5
+  rect:
+    serializedVersion: 2
+    x: 777
+    y: 91
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &-121944951448221550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23b155916e77754e87741fd25dfc5a3, type: 3}
+  m_Name: fc91dfaf-fc3f-402e-b3d6-71cdf3e84a81
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Great then. I need of a hat.
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1026
+    y: 199
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: GiveQuest
+  condition:
+    and: []
+--- !u!114 &-120366630083955216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23b155916e77754e87741fd25dfc5a3, type: 3}
+  m_Name: 0f6c7c58-a901-4d52-ac3d-82bf7778cbb2
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Here is your hat.
+  children:
+  - 3c1318c5-7ac4-4ae0-ae5a-b6824dee8265
+  rect:
+    serializedVersion: 2
+    x: 778
+    y: 397
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and:
+    - or:
+      - predicate: HasQuest
+        isNegated: 0
+        parameters:
+        - Quest 2
+    - or:
+      - predicate: CompletedQuest
+        isNegated: 0
+        parameters:
+        - Quest 2
+      - predicate: HasInventoryItem
+        isNegated: 0
+        parameters:
+        - ae78d8f2-9580-473b-8652-dde0e1a972b6
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de37e2cc4993c9a48b1d64095e8a553f, type: 3}
+  m_Name: GiveQuest
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 5231666423359602332}
+  - {fileID: -1459273727922261765}
+  - {fileID: -1736549815835946463}
+  - {fileID: -476084723540305740}
+  - {fileID: 6990158827497204369}
+  - {fileID: -121944951448221550}
+  - {fileID: 8897031555285916566}
+  - {fileID: -512220565326090189}
+  - {fileID: 6010199119152535322}
+  - {fileID: -120366630083955216}
+  - {fileID: -4757583516974333670}
+  - {fileID: 3363472929858528748}
+  - {fileID: -4186161917716993600}
+  newNodeOffset: {x: 250, y: 0}
+  displayPlayerNodeTextOnChoice: 0
+--- !u!114 &3363472929858528748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23b155916e77754e87741fd25dfc5a3, type: 3}
+  m_Name: f2a5893b-c64e-46d2-baec-814a26586022
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: The other guy said to talk to you.
+  children:
+  - 59b0947e-b5da-40b8-8f0a-c3ac2721ab8d
+  rect:
+    serializedVersion: 2
+    x: 278
+    y: 203
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and:
+    - or:
+      - predicate: HasQuest
+        isNegated: 0
+        parameters:
+        - Quest 1
+    - or:
+      - predicate: CompletedQuest
+        isNegated: 1
+        parameters:
+        - Quest 1
+--- !u!114 &5231666423359602332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23b155916e77754e87741fd25dfc5a3, type: 3}
+  m_Name: 4d3676a9-b727-4a5b-88f6-04720ca344aa
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Hello! Hello! Hello!
+  children:
+  - 3cbad2cd-94f8-480b-83cb-682e8e1e79d5
+  - f2a5893b-c64e-46d2-baec-814a26586022
+  rect:
+    serializedVersion: 2
+    x: 28
+    y: 92
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &6010199119152535322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23b155916e77754e87741fd25dfc5a3, type: 3}
+  m_Name: e70e23df-c916-43e3-86ac-8aeb5caef982
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Oh, right...
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1029
+    y: 301
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &6990158827497204369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23b155916e77754e87741fd25dfc5a3, type: 3}
+  m_Name: 363b3ca4-a89b-46a3-ae51-dc7202b1cfe2
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: I guess... sure.
+  children:
+  - fc91dfaf-fc3f-402e-b3d6-71cdf3e84a81
+  rect:
+    serializedVersion: 2
+    x: 778
+    y: 199
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and:
+    - or:
+      - predicate: HasQuest
+        isNegated: 1
+        parameters:
+        - Quest 2
+--- !u!114 &8897031555285916566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23b155916e77754e87741fd25dfc5a3, type: 3}
+  m_Name: f1c5372c-1af0-4c6e-a508-5647dfe0caf5
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Ah, pity.
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1027
+    y: 91
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []

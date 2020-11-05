@@ -27,6 +27,9 @@ namespace RPG.Attributes
 
         private float currentMaxHp = 0f;
 
+        private Animator anim;
+        private ActionScheduler actionScheduler;
+
         public float GetHealth
         {
             get { return healthPoints.value; }
@@ -41,6 +44,8 @@ namespace RPG.Attributes
         {
             baseStats = GetComponent<BaseStats>();
             healthPoints = new LazyValue<float>(GetInitialHealth);
+            anim = GetComponent<Animator>();
+            actionScheduler = GetComponent<ActionScheduler>();
         }
 
         private float GetInitialHealth()
@@ -119,11 +124,14 @@ namespace RPG.Attributes
             return (healthPoints.value / baseStats.GetStat(Stat.Health));
         }
 
-        private void Die()
+        private void Die(bool immediate = false)
         {
             isDead = true;
-            GetComponent<Animator>().SetTrigger("DeathTrigger");
-            GetComponent<ActionScheduler>().CancelCurrentAction();
+            if (immediate)
+                anim.Play("Death", 0, 1);
+            else
+                anim.SetTrigger("DeathTrigger");
+            actionScheduler.CancelCurrentAction();
         }
 
         private void AwardExperience(GameObject instigator)
@@ -148,7 +156,7 @@ namespace RPG.Attributes
             currentMaxHp = baseStats.GetStat(Stat.Health);
 
             if (healthPoints.value <= 0)
-                Die();
+                Die(true);
         }
     }
 }

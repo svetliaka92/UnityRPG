@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b064f261fdc42428891ed7b65b48ec, type: 3}
+  m_Name: Quest 1
+  m_EditorClassIdentifier: 
+  title: Example Quest 1
+  progress: 3/5
+  objectives:
+  - reference: TalkGuard
+    description: Talk to the other guard
+  rewards:
+  - number: 1
+    item: {fileID: 11400000, guid: 3857eb2c79519f64b9585091647c3516, type: 2}

@@ -92,6 +92,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19ff972ec6859b48870488d7b1e81b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8396108207784720348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707529631293697765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa0a466f39df5c499e379e4846c7bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testDialogue: {fileID: 11400000, guid: 021c6e5b44bfafb4590b3f19b1a6a9f0, type: 2}
+  playerName: Svet
+--- !u!114 &6714082665969690046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707529631293697765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff7ee2daa14d8b4282317ee937b0e20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statuses:
+  - quest: {fileID: 11400000, guid: bd28aff0bd20af74ea544ad2e3eb723f, type: 2}
+    completedObjectives:
+    - 1
+    - 2
+    - 3
+  - quest: {fileID: 11400000, guid: a57b0b98c1e08254ca88eb9f10f76ad8, type: 2}
+    completedObjectives:
+    - a
 --- !u!1001 &3258244984378262574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -182,6 +217,12 @@ PrefabInstance:
       propertyPath: characterClass
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2476106007581276671, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: levelUpParticles
+      value: 
+      objectReference: {fileID: 506396147870324930, guid: f2e0dba180fa40047ae73a96ee821e9a,
+        type: 3}
     - target: {fileID: -2102331410648165797, guid: 5962190d83e785c4a840cf64e547b8f9,
         type: 3}
       propertyPath: uniqueIdentifier
@@ -292,7 +333,7 @@ PrefabInstance:
     - target: {fileID: 7923497452033287611, guid: 5962190d83e785c4a840cf64e547b8f9,
         type: 3}
       propertyPath: cursorMappings.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7923497452033287611, guid: 5962190d83e785c4a840cf64e547b8f9,
         type: 3}
@@ -354,6 +395,16 @@ PrefabInstance:
       propertyPath: raycastRadius
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 7923497452033287611, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: cursorMappings.Array.data[5].cursorType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923497452033287611, guid: 5962190d83e785c4a840cf64e547b8f9,
+        type: 3}
+      propertyPath: cursorMappings.Array.data[5].cursorTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 96d4bfdb0d6d8c042bf8fccf6524d239, type: 3}
     - target: {fileID: 8515129105754559657, guid: 5962190d83e785c4a840cf64e547b8f9,
         type: 3}
       propertyPath: m_RootOrder

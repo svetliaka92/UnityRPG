@@ -16,6 +16,9 @@ namespace RPG.Combat
 
         public bool HandleRaycast(PlayerController callingController)
         {
+            if (!enabled)
+                return false;
+             
             if (!callingController.PlayerFighter.CanAttack(gameObject))
                 return false;
 

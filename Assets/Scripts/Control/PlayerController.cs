@@ -90,8 +90,6 @@ namespace RPG.Control
             }
 
             Array.Sort(distances, hits);
-            // sort by distance
-            // return
             return hits;
         }
 
@@ -149,13 +147,11 @@ namespace RPG.Control
         {
             target = new Vector3();
 
-            // raycast to terrain
             RaycastHit hit;
             bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
             if (!hasHit)
                 return false;
 
-            // find nearest navmesh point
             NavMeshHit navMeshHit;
             bool hasCastToNavMesh = NavMesh.SamplePosition(hit.point,
                                                            out navMeshHit,
@@ -165,7 +161,6 @@ namespace RPG.Control
             if (!hasCastToNavMesh)
                 return false;
             
-            // return true if found
             target = navMeshHit.position;
 
             if (!mover.CanMoveTo(target))

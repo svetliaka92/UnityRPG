@@ -11,6 +11,7 @@ namespace RPG.Dialogue
     {
         [SerializeField] List<DialogueNode> nodes = new List<DialogueNode>();
         [SerializeField] Vector2 newNodeOffset = new Vector2(250, 0);
+        [SerializeField] bool displayPlayerNodeTextOnChoice = false;
 
         Dictionary<string, DialogueNode> nodeLookup = new Dictionary<string, DialogueNode>();
 
@@ -20,6 +21,8 @@ namespace RPG.Dialogue
             foreach (DialogueNode node in GetAllNodes())
                 nodeLookup[node.name] = node;
         }
+
+        public bool DisplayPlayerNodeTextOnChoice() => displayPlayerNodeTextOnChoice;
 
         public IEnumerable<DialogueNode> GetAllNodes()
         {
@@ -36,6 +39,20 @@ namespace RPG.Dialogue
             foreach (string childID in parentNode.GetChrildren())
                 if (nodeLookup.ContainsKey(childID))
                     yield return nodeLookup[childID];
+        }
+
+        internal IEnumerable<DialogueNode> GetPlayerChoices(DialogueNode parentNode)
+        {
+            foreach (DialogueNode node in GetAllChildren(parentNode))
+                if (node.IsPlayerSpeaking())
+                    yield return node;
+        }
+
+        internal IEnumerable<DialogueNode> GetAllAIChildren(DialogueNode parentNode)
+        {
+            foreach (DialogueNode node in GetAllChildren(parentNode))
+                if (!node.IsPlayerSpeaking())
+                    yield return node;
         }
 
         public void CreateNode(DialogueNode parentNode)

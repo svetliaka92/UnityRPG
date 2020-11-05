@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using RPG.Saving;
+using RPG.Core;
 
 namespace GameDevTV.Inventories
 {
@@ -10,7 +11,7 @@ namespace GameDevTV.Inventories
     ///
     /// This component should be placed on the GameObject tagged "Player".
     /// </summary>
-    public class Inventory : MonoBehaviour, ISaveable
+    public class Inventory : MonoBehaviour, ISaveable, IPredicateEvaluator
     {
         // CONFIG DATA
         [Tooltip("Allowed size")]
@@ -74,10 +75,9 @@ namespace GameDevTV.Inventories
 
             slots[i].item = item;
             slots[i].number += number;
-            if (inventoryUpdated != null)
-            {
-                inventoryUpdated();
-            }
+
+            inventoryUpdated?.Invoke();
+
             return true;
         }
 
@@ -94,6 +94,15 @@ namespace GameDevTV.Inventories
                 }
             }
             return false;
+        }
+
+        public bool HasEnoughItems(InventoryItem item, int number)
+        {
+            int slot = FindSlot(item);
+            if (slot < 0)
+                return false;
+
+            return slots[slot].number <= number;
         }
 
         /// <summary>
@@ -124,10 +133,20 @@ namespace GameDevTV.Inventories
                 slots[slot].number = 0;
                 slots[slot].item = null;
             }
-            if (inventoryUpdated != null)
+
+            inventoryUpdated?.Invoke();
+        }
+
+        public bool RemoveItem(InventoryItem item, int number)
+        {
+            int slot = GetSlotOfItem(item);
+            if (slot >= 0)
             {
-                inventoryUpdated();
+                RemoveFromSlot(slot, number);
+                return true;
             }
+
+            return false;
         }
 
         /// <summary>
@@ -154,10 +173,9 @@ namespace GameDevTV.Inventories
 
             slots[slot].item = item;
             slots[slot].number += number;
-            if (inventoryUpdated != null)
-            {
-                inventoryUpdated();
-            }
+            
+            inventoryUpdated?.Invoke();
+            
             return true;
         }
 
@@ -166,6 +184,21 @@ namespace GameDevTV.Inventories
         private void Awake()
         {
             slots = new InventorySlot[inventorySize];
+        }
+
+        /// <summary>
+        /// Find the slot the given item is at.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>-1 if no slot contains given item</returns>
+        private int GetSlotOfItem(InventoryItem item)
+        {
+            int slotIndex = -1;
+            for (int i = 0; i < slots.Length; ++i)
+                if (object.ReferenceEquals(slots[i].item, item))
+                    slotIndex = i;
+
+            return slotIndex;
         }
 
         /// <summary>
@@ -248,10 +281,21 @@ namespace GameDevTV.Inventories
                 slots[i].item = InventoryItem.GetFromID(slotStrings[i].itemID);
                 slots[i].number = slotStrings[i].number;
             }
-            if (inventoryUpdated != null)
+
+            inventoryUpdated?.Invoke();
+        }
+
+        public bool? Evaluate(string predicate, string[] paremeters)
+        {
+            switch (predicate)
             {
-                inventoryUpdated();
+                case "HasInventoryItem":
+                    return HasItem(InventoryItem.GetFromID(paremeters[0]));
+                case "HasEnoughInventoryItems":
+                    return HasEnoughItems(InventoryItem.GetFromID(paremeters[0]), int.Parse(paremeters[1]));
             }
+
+            return null;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using RPG.Core;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -11,6 +13,9 @@ namespace RPG.Dialogue
         [SerializeField] private string text = "";
         [SerializeField] private List<string> children = new List<string>();
         [SerializeField] private Rect rect = new Rect(20, 20, 200, 100);
+        [SerializeField] private string onEnterAction = "";
+        [SerializeField] private string onExitAction = "";
+        [SerializeField] private Condition condition;
 
         public bool IsPlayerSpeaking() => isPlayerSpeaking;
 
@@ -19,6 +24,12 @@ namespace RPG.Dialogue
         public List<string> GetChrildren() => children;
 
         public Rect GetRect() => rect;
+
+        public string GetOnEnterAction() => onEnterAction;
+
+        public string GetOnExitAction() => onExitAction;
+
+        public bool CheckCondition(IEnumerable<IPredicateEvaluator> evaluators) => condition.Check(evaluators);
 
 #if UNITY_EDITOR
         public void SetIsPlayerSpeaking(bool newIsPlayerSpeaking)
